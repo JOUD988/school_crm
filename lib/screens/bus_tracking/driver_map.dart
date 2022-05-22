@@ -35,8 +35,10 @@ class _DriverMapState extends State<DriverMap> {
     print("3");
 
     BitmapDescriptor.fromAssetImage(ImageConfiguration(size: Size(10, 10)),
-        'assets/images/school_bus.png')
+        'assets/images/school_bus.png'
+    )
         .then((onValue) {
+
       busIcon = onValue;
     });
     print("4");
@@ -53,8 +55,6 @@ class _DriverMapState extends State<DriverMap> {
               return Center(child: CircularProgressIndicator());
             }
             if (_added) myMap(snapshot);
-
-            if(true)  print("5");
 
 
             return GoogleMap(
@@ -170,11 +170,11 @@ class _DriverMapState extends State<DriverMap> {
 
   _getLocation() async {
     try {
-/*
       var status = await Permission.location.request();
 
       print(status);
-*/
+
+
 
       final loc.LocationData _locationResult = await location.getLocation();
       await FirebaseFirestore.instance.collection('location').doc('user').set(
