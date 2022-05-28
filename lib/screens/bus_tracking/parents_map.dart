@@ -4,11 +4,15 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:location/location.dart' as loc;
 import 'package:schoolcrm/constans/colors.dart';
-import 'package:custom_map_markers/custom_map_markers.dart';
+import 'package:schoolcrm/constans/fonts.dart';
+import 'package:schoolcrm/screens/bus_tracking/componants/custom_sliding_up_panel.dart';
+import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class ParentsMap extends StatefulWidget {
+
   @override
   State<ParentsMap> createState() => _ParentsMapState();
+
 }
 
 class _ParentsMapState extends State<ParentsMap> {
@@ -16,24 +20,21 @@ class _ParentsMapState extends State<ParentsMap> {
   GoogleMapController _controller;
   bool _added = false;
   BitmapDescriptor busIcon;
-
-  List<MarkerData> customMarkers;
-
+  Set<Marker> markers = Set();
 
 
   @override
   void initState() {
     super.initState();
-    _requestPermission();
+    BitmapDescriptor.fromAssetImage(ImageConfiguration(size: Size(10, 10)),
+        'assets/images/bus1-2.png')
+        .then((onValue) {
+      busIcon = onValue;
+    });
 
-      customMarkers = [
-       MarkerData(
-       marker: Marker(markerId: MarkerId("mID"),position: LatLng(33.513894,36.276532)),
-       child: _customMarker3("Driver name \n0937731544", Colors.black),
-
-    )
-     ];
   }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -46,31 +47,23 @@ class _ParentsMapState extends State<ParentsMap> {
               return Center(child: CircularProgressIndicator());
             }
             if (snapshot.hasData) {
-
               print("!Empty Snapshot");
 
-              return CustomGoogleMapMarkerBuilder(
-                customMarkers: customMarkers,
-                builder: (BuildContext context, Set<Marker> markers){
-
-                  return GoogleMap(
+              return Stack(
+                children: [
+                  GoogleMap(
                     mapType: MapType.normal,
-
-                    markers:
-                      /*Marker(
-                          position: LatLng(snapshot.data.docs.first["latitude"],
-                            snapshot.data.docs.first["longitude"],
-                          ),
-                          markerId: MarkerId('id'),
-                          icon: BitmapDescriptor.defaultMarker,
-
-
-                      )*/
-                      markers,
-
+                    markers: {
+                      Marker(
+                        markerId: MarkerId("id"),
+                        position: LatLng(33.513894, 36.276532),
+                        icon: busIcon,
+                      )
+                    },
                     initialCameraPosition: CameraPosition(
                       zoom: 17.0,
-                      target: LatLng(snapshot.data.docs.first["latitude"],
+                      target: LatLng(
+                        snapshot.data.docs.first["latitude"],
                         snapshot.data.docs.first["longitude"],
                       ),
                     ),
@@ -80,83 +73,29 @@ class _ParentsMapState extends State<ParentsMap> {
                         _added = true;
                       });
                     },
-                  );
+                  ),
+                  CustomSlidingUpPanel(
+                    driverName: "محمد حمدان", driverPhoneNumber: "0944669699",)
 
-
-
-                }
-
-
-
-
-
+                ],
               );
-
-
-
-
-
-
-
             }
           }),
     );
   }
 
-  _requestPermission() async {
-    var status = await Permission.location.request();
-    if (status.isGranted)
-      print("Done");
-    else if (status.isDenied) {
-      print("isDenied");
-      _requestPermission();
-    } else if (status.isPermanentlyDenied) {
-      print("isPermanentlyDenied");
-      location.requestPermission();
-      //openAppSettings();
 
-    }
-  }
 
   Future<void> myMap(AsyncSnapshot<QuerySnapshot> snapshot) async {
     await _controller
         .animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
       target: LatLng(33.513894, 36.276532
-          /*snapshot.data.docs.first["latitude"],
+        /*snapshot.data.docs.first["latitude"],
         snapshot.data.docs.first["longitude"],*/
-          ),
-      zoom: 18,
+      ),
+      zoom: 17,
     )));
   }
 
-
-  _customMarker3(String text, Color color) {
-    return Container(
-      margin: const EdgeInsets.all(8),
-      padding: const EdgeInsets.all(8),
-      decoration: BoxDecoration(
-          border: Border.all(color: color, width: 2),
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(4),
-          boxShadow: [BoxShadow(color: color, blurRadius: 6)]),
-      child: Center(
-          child: Text(
-            text,
-            textAlign: TextAlign.center,
-          )),
-    );
-  }
-
-/*Align(
-                    //alignment: Alignment.lerp(a, b, t),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: primaryColor,
-                      ),
-                      width: MediaQuery.of(context).size.width - 30,
-                      height: 50,
-                    ),
-                  )*/
 
 }

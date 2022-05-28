@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:schoolcrm/constans/colors.dart';
+import 'package:schoolcrm/screens/bus_tracking/parents_map.dart';
 
 class ManagerDrawer extends StatelessWidget {
 
@@ -6,9 +8,9 @@ class ManagerDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return  Drawer(
-      backgroundColor: Colors.grey.shade300,
+      backgroundColor:secondaryColorLight ,
         shape:RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(topRight: Radius.circular(50),bottomRight: Radius.circular(50))
+          borderRadius: BorderRadius.only(bottomLeft: Radius.circular(50))
           ),
 
         child: ListView(
@@ -19,23 +21,26 @@ class ManagerDrawer extends StatelessWidget {
               child: Container(
                 child: DrawerHeader(
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                    borderRadius: BorderRadius.all(Radius.circular(0)),
                      image: DecorationImage(
                         fit: BoxFit.fill,
-                        image: AssetImage("assets/images/school_logo.png")),
+                        image: AssetImage("assets/images/school_logo.jpeg")),
 
                   ),
                 ),
               ),
             ),
             ListTile(
-              leading: Icon(Icons.airport_shuttle, color: Colors.blue),
-              title: Text('Where is the bus?' , style: TextStyle(
-                color: Colors.blueGrey.shade800,
+              
+              trailing: Icon(Icons.airport_shuttle, color: primaryColor),
 
+              title: Text('تتبع الباص' , style: TextStyle(
+                color: Colors.blueGrey.shade800,
+                fontSize: 15,
+                fontFamily: "Readex_Pro",
               ),),
               onTap: () => {
-                Navigator.of(context).push(MaterialPageRoute(builder: (context) => Container ())),
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => ParentsMap ())),
 
               },
             ),

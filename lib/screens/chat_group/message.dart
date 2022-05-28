@@ -1,8 +1,7 @@
 import 'package:agora_rtm/agora_rtm.dart';
+import 'package:schoolcrm/constans/app_bar_style.dart';
+import 'package:schoolcrm/constans/colors.dart';
 import 'package:schoolcrm/constans/time.dart';
-import 'package:schoolcrm/custom_ui/emoji_keyboard.dart';
-import 'package:schoolcrm/custom_ui/own_message_card.dart';
-import 'package:schoolcrm/custom_ui/reply_card.dart';
 import 'package:schoolcrm/models/logs.dart';
 import 'package:schoolcrm/models/message_model.dart';
 import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
@@ -10,6 +9,9 @@ import 'package:flutter/material.dart';
 import 'dart:io';
 
 import 'package:intl/intl.dart';
+import 'package:schoolcrm/screens/chat_group/custom_ui/emoji_keyboard.dart';
+import 'package:schoolcrm/screens/chat_group/custom_ui/own_message_card.dart';
+import 'package:schoolcrm/screens/chat_group/custom_ui/reply_card.dart';
 
 class MessageScreen extends StatefulWidget {
   final AgoraRtmClient client;
@@ -121,7 +123,10 @@ class _MessageScreenState extends State<MessageScreen> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text("School Group"),
+        backgroundColor: primaryColor,
+        title: Text("غرفة المحادثة",style: TextStyle(fontFamily: "Readex_Pro"),),
+          systemOverlayStyle:systemOverlayStyle,
+          shape: shape,
         leading: BackButton(
           onPressed: () {
             widget.client.logout();
@@ -217,6 +222,7 @@ class _MessageScreenState extends State<MessageScreen> {
                                   },
                                   icon: Icon(
                                     Icons.emoji_emotions_outlined,
+                                    color: primaryColor,
                                   ),
                                 ),
                               ),
@@ -225,7 +231,7 @@ class _MessageScreenState extends State<MessageScreen> {
                       Padding(
                         padding: const EdgeInsets.only(bottom: 20),
                         child: CircleAvatar(
-                          backgroundColor: Colors.blue,
+                          backgroundColor: primaryColor,
                           child: IconButton(
                             icon: Icon(Icons.send, color: Colors.white),
                             onPressed: () async {

@@ -1,10 +1,20 @@
 import 'package:agora_rtm/agora_rtm.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_arc_speed_dial/flutter_speed_dial_menu_button.dart';
+import 'package:flutter_arc_speed_dial/main_menu_floating_action_button.dart';
+import 'package:schoolcrm/constans/app_bar_style.dart';
+import 'package:schoolcrm/constans/colors.dart';
 import 'package:schoolcrm/constans/time.dart';
 import 'package:schoolcrm/models/logs.dart';
+import 'package:schoolcrm/screens/home/componants/absences.dart';
+import 'package:schoolcrm/screens/home/componants/financial_fees.dart';
+import 'package:schoolcrm/screens/home/componants/my_floating_action_button.dart';
 import 'package:schoolcrm/screens/home/drawer/drawer.dart';
 import 'package:schoolcrm/screens/chat_group/message.dart';
 import 'package:flutter/material.dart';
 import 'package:schoolcrm/models/message_model.dart';
+import 'package:speed_dial_fab/speed_dial_fab.dart';
+import 'package:decorative_app_bar/decorative_app_bar.dart';
 
 class Home extends StatefulWidget {
   String userid;
@@ -20,7 +30,7 @@ class _HomeState extends State<Home> {
   AgoraRtmChannel _channel;
   ObjectLogController _logController = ObjectLogController();
   LogController _oldLog = LogController();
-  String appId = "fe0d787be661401fa2b97228ce0f9c56";
+  String appId = "bb63209254774326bc95604ee1057f2e";
 
   @override
   void initState() {
@@ -28,22 +38,36 @@ class _HomeState extends State<Home> {
     createClient();
   }
 
+  final Shader linearGradient = LinearGradient(
+    colors: <Color>[Colors.white, Color(0xffffccbc)],
+  ).createShader(Rect.fromLTWH(0.0, 0.0, 200.0, 70.0));
+  bool _isShowDial = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Drawer(
+      endDrawer: Drawer(
         backgroundColor: Colors.transparent,
-        child:  ManagerDrawer(),
+        child: ManagerDrawer(),
       ),
-      appBar: AppBar(),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.message),
-        onPressed: ()
-        {
+      appBar: AppBar(
+        systemOverlayStyle: systemOverlayStyle,
+        shape: shape,
+        backgroundColor: primaryColor,
+        shadowColor:primaryColor,
+      ),
 
-          login(context);
-        },
+
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            AbsencesContainer(),
+          ],
+
+        ),
       ),
+      floatingActionButton: MyFloatingActionButton(login: login,context: context,),
+
     );
   }
 
@@ -81,10 +105,7 @@ class _HomeState extends State<Home> {
                     userId: widget.userid,
                     logController: _oldLog,
                     objectLogController: _logController,
-                  )
-          )
-      );
-
+                  )));
     } catch (errorCode) {
       print('Join channel error: ' + errorCode.toString());
     }
@@ -102,8 +123,6 @@ class _HomeState extends State<Home> {
     };
     return channel;
   }
-
-
 
 /*
   Future<bool> isOnline() async {
@@ -123,4 +142,14 @@ class _HomeState extends State<Home> {
 
 
   }*/
+
+/*  FloatingActionButton(
+  child: Icon(Icons.message),
+  onPressed: ()
+  {
+
+  login(context);
+  },*/
+/**/
+
 }
