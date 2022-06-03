@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:schoolcrm/constans/app_bar_style.dart';
 import 'package:schoolcrm/constans/colors.dart';
+import 'package:schoolcrm/constans/fonts.dart';
 
 
 const channelName = "school";
@@ -15,7 +16,6 @@ class VideoCall extends StatefulWidget {
 }
 
 class _VideoCallState extends State<VideoCall> {
-  var  textStyle = TextStyle(fontFamily:"Scheherazade_New" , fontSize: 23,color: Colors.blueGrey.shade800);
 
   final AgoraClient client = AgoraClient(
     agoraConnectionData: AgoraConnectionData(
@@ -36,7 +36,7 @@ class _VideoCallState extends State<VideoCall> {
     )
   );
 
-  void initAgora() async {
+  void _initAgora() async {
     print("${client.users} +++++++++++++++++++");
     await client.initialize();
     print("${client.users} +++++++++++++++++++");
@@ -45,7 +45,7 @@ class _VideoCallState extends State<VideoCall> {
   @override
   void initState() {
     super.initState();
-    initAgora();
+    _initAgora();
   }
 
   @override
@@ -53,7 +53,7 @@ class _VideoCallState extends State<VideoCall> {
     print("${client.users} +++++++++++++++++++");
     return Scaffold(
       appBar: AppBar(
-        title: const Text('مكالمة الفيديو',style: TextStyle(fontFamily:"Aref_Ruqaa" ,fontWeight: FontWeight.bold)),
+        title: const Text('الاجتماعات',style: TextStyle(fontFamily:readexFont ,fontWeight: FontWeight.bold)),
         centerTitle: true,
         systemOverlayStyle: systemOverlayStyle,
         backgroundColor: primaryColor,
@@ -65,7 +65,10 @@ class _VideoCallState extends State<VideoCall> {
 
               children: [
                 AgoraVideoViewer(
-                    client: client,
+                  client: client,
+                  videoRenderMode: VideoRenderMode.FILL,
+                  layoutType: Layout.floating,
+                  showNumberOfUsers: true,
                 ),
                 AgoraVideoButtons(
                   enabledButtons: [
@@ -75,7 +78,8 @@ class _VideoCallState extends State<VideoCall> {
                   ],
                     autoHideButtons: true,
                     autoHideButtonTime: 10,
-                    client: client)
+                    client: client
+                )
               ],
             ),
       ),

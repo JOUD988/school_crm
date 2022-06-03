@@ -37,8 +37,9 @@ class AbsencesContainer extends StatelessWidget {
         margin: EdgeInsets.all(20),
         decoration: myBoxDecoration,
 
+
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 50,vertical: 10),
+          padding: EdgeInsets.symmetric(horizontal: 30,vertical: 10),
 
           child: PieChart(
 
@@ -68,31 +69,3 @@ class AbsencesContainer extends StatelessWidget {
 
   }
 }
-/*
-
-Column(
-mainAxisAlignment: MainAxisAlignment.center,
-children: [
-Row(
-mainAxisAlignment: MainAxisAlignment.center,
-children: [
-Text(studentName,style: textStyle,),
-Text("غيابات الطالب",style: textStyle,),
-],
-),
-SizedBox(height: 20,),
-Row(
-mainAxisAlignment: MainAxisAlignment.center,
-children: [
-Text("غياب", style: textStyle ),
-SizedBox(width: 20,),
-Text("15", style: textStyle),
-SizedBox(width: 2,),
-Text("/", style: textStyle),
-SizedBox(width: 2,),
-Text(numberOfAbsences.toString(),style: textStyle,)
-],
-),
-],
-
-),*/

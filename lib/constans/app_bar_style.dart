@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:schoolcrm/constans/colors.dart';
 
 
 var systemOverlayStyle = SystemUiOverlayStyle(
-statusBarColor: Colors.lightGreen,
+statusBarColor: primaryColor,
 statusBarIconBrightness: Brightness.light, // For Android (dark icons)
 statusBarBrightness: Brightness.light, // For iOS (dark icons)
 );

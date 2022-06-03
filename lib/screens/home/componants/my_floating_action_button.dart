@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:schoolcrm/constans/colors.dart';
 import 'package:schoolcrm/screens/video_call/video_call.dart';
 import 'package:speed_dial_fab/speed_dial_fab.dart';
 
@@ -33,9 +34,9 @@ class MyFloatingActionButton extends StatelessWidget {
             MaterialPageRoute(builder: (context) =>  VideoCall())),
         },
       ],
-      secondaryBackgroundColor: Colors.lightGreen,
+      secondaryBackgroundColor: primaryColor,
       secondaryForegroundColor: Colors.white,
-      primaryBackgroundColor: Colors.lightGreen,
+      primaryBackgroundColor: primaryColor,
       primaryForegroundColor: Colors.white,
     );
 

@@ -1,3 +1,6 @@
 import 'package:flutter/material.dart';
 
-const String myFont = "Readex_Pro";
+const String readexFont = "Readex_Pro";
+const String cairoFont = "Cairo";
+
+

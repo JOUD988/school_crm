@@ -53,6 +53,10 @@ dependencies:
   sliding_up_panel: ^2.0.0+1
   url_launcher: ^6.1.2
   url_launcher_ios: ^6.0.17
+  open_mail_app: ^0.4.5
+  image_picker: ^0.8.5+3
+  file_picker: ^4.6.0
+  provider: ^6.0.3
 
 
 
@@ -107,6 +111,9 @@ flutter:
       fonts:
         - asset: assets/fonts/Readex_Pro/ReadexPro-VariableFont_wght.ttf
 
+    - family: Cairo
+      fonts:
+        - asset: assets/fonts/Cairo/Cairo-VariableFont_wght.ttf
 
 
 

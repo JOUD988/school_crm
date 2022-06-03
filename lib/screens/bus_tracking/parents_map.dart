@@ -27,20 +27,18 @@ class _ParentsMapState extends State<ParentsMap> {
   void initState() {
     super.initState();
     BitmapDescriptor.fromAssetImage(ImageConfiguration(size: Size(10, 10)),
-        'assets/images/bus1-2.png')
+        'assets/images/myBus.png')
         .then((onValue) {
       busIcon = onValue;
     });
 
   }
 
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: StreamBuilder(
-          stream: FirebaseFirestore.instance.collection("location").snapshots(),
+          stream: FirebaseFirestore.instance.collection("drivers").snapshots(),
           builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
             if (!snapshot.hasData) {
               print("Empty Snapshot");
@@ -48,6 +46,8 @@ class _ParentsMapState extends State<ParentsMap> {
             }
             if (snapshot.hasData) {
               print("!Empty Snapshot");
+              if (_added) myMap(snapshot);
+
 
               return Stack(
                 children: [
@@ -56,12 +56,12 @@ class _ParentsMapState extends State<ParentsMap> {
                     markers: {
                       Marker(
                         markerId: MarkerId("id"),
-                        position: LatLng(33.513894, 36.276532),
+                        position: LatLng(snapshot.data.docs.first["latitude"],snapshot.data.docs.first["longitude"]),
                         icon: busIcon,
                       )
                     },
                     initialCameraPosition: CameraPosition(
-                      zoom: 17.0,
+                      zoom: 15.0,
                       target: LatLng(
                         snapshot.data.docs.first["latitude"],
                         snapshot.data.docs.first["longitude"],
@@ -75,12 +75,15 @@ class _ParentsMapState extends State<ParentsMap> {
                     },
                   ),
                   CustomSlidingUpPanel(
-                    driverName: "محمد حمدان", driverPhoneNumber: "0944669699",)
+                    driverName: snapshot.data.docs.first["name"],
+                    driverPhoneNumber: snapshot.data.docs.first['number'],
+                  )
 
                 ],
               );
             }
-          }),
+          }
+          ),
     );
   }
 
@@ -89,11 +92,11 @@ class _ParentsMapState extends State<ParentsMap> {
   Future<void> myMap(AsyncSnapshot<QuerySnapshot> snapshot) async {
     await _controller
         .animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
-      target: LatLng(33.513894, 36.276532
-        /*snapshot.data.docs.first["latitude"],
-        snapshot.data.docs.first["longitude"],*/
+      target: LatLng(
+        snapshot.data.docs.first["latitude"],
+        snapshot.data.docs.first["longitude"],
       ),
-      zoom: 17,
+      zoom: 15,
     )));
   }
 

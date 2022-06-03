@@ -1,3 +1,4 @@
+/*
 import 'package:flutter/material.dart';
 
 class Tip5 extends StatefulWidget {
@@ -49,4 +50,4 @@ class Tip5State extends State<Tip5> {
       ),
     );
   }
-}
+}*/

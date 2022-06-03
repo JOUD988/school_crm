@@ -6,7 +6,7 @@ import 'package:sliding_up_panel/sliding_up_panel.dart';
 class CustomSlidingUpPanel extends StatelessWidget {
 
   final String driverName;
-  final String driverPhoneNumber;
+  final int driverPhoneNumber;
   CustomSlidingUpPanel({this.driverName,this.driverPhoneNumber});
 
   Widget _floatingCollapsed(){
@@ -20,7 +20,7 @@ class CustomSlidingUpPanel extends StatelessWidget {
         child: Text(
           "معلومات السائق",
           style: TextStyle(color: Colors.white,
-            fontFamily: myFont,
+            fontFamily: readexFont,
           ),
         ),
       ),
@@ -50,15 +50,15 @@ class CustomSlidingUpPanel extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Text(driverName,style: TextStyle(fontSize: 25,fontFamily: myFont,),),
-                Text("اسم السائق",style: TextStyle(fontSize: 25,fontFamily: myFont,),),
+                Text(driverName,style: TextStyle(fontSize: 20,fontFamily: readexFont,),),
+                Text("اسم السائق",style: TextStyle(fontSize: 20,fontFamily: readexFont,),),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Text(driverPhoneNumber,style: TextStyle(fontSize: 25,fontFamily: myFont,),),
-                Text("رقم السائق",style: TextStyle(fontSize: 25,fontFamily: myFont,),),
+                Text(driverPhoneNumber.toString(),style: TextStyle(fontSize: 20,fontFamily: readexFont,),),
+                Text("رقم السائق",style: TextStyle(fontSize: 20,fontFamily: readexFont,),),
               ],
             ),
 

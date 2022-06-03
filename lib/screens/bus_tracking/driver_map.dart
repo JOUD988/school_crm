@@ -34,7 +34,7 @@ class _DriverMapState extends State<DriverMap> {
     location.changeSettings(interval: 300, accuracy: loc.LocationAccuracy.high);
     location.enableBackgroundMode(enable: true);
     BitmapDescriptor.fromAssetImage(
-            ImageConfiguration(size: Size(10, 10)), 'assets/images/bus1-2.png')
+            ImageConfiguration(size: Size(10, 10)), "assets/images/myBus.png")
         .then((onValue) {
       busIcon = onValue;
     });
@@ -44,7 +44,7 @@ class _DriverMapState extends State<DriverMap> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: StreamBuilder(
-          stream: FirebaseFirestore.instance.collection("location").snapshots(),
+          stream: FirebaseFirestore.instance.collection("drivers").snapshots(),
           builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
             if (!snapshot.hasData) {
               print("Empty Snapshot");
@@ -52,7 +52,7 @@ class _DriverMapState extends State<DriverMap> {
             }
             if (snapshot.hasData) {
               print("!Empty Snapshot");
-              if (_added) myMap(snapshot);//good
+              if (_added) myMap(snapshot);
 
               return GoogleMap(
                 mapType: MapType.normal,
@@ -67,7 +67,7 @@ class _DriverMapState extends State<DriverMap> {
                   )
                 },
                 initialCameraPosition: CameraPosition(
-                  zoom: 17.0,
+                  zoom: 15.0,
                   target: LatLng(
                     snapshot.data.docs.first["latitude"],
                     snapshot.data.docs.first["longitude"],
@@ -111,11 +111,11 @@ class _DriverMapState extends State<DriverMap> {
         snapshot.data.docs.first["latitude"],
         snapshot.data.docs.first["longitude"],
       ),
-      zoom: 17,
+      zoom: 15,
     )));
   }
 
-  requestPermission() async {//good
+  requestPermission() async {
     var status = await Permission.location.request();
     if (status.isGranted)
       print("Done");
@@ -136,7 +136,7 @@ class _DriverMapState extends State<DriverMap> {
       print(
           "latitude: ${currentLocation.latitude}, longitude: ${currentLocation.longitude}");
 
-      await FirebaseFirestore.instance.collection('location').doc('driverLocation').set({
+      await FirebaseFirestore.instance.collection('location').doc('ah2s4If9Xz4vuirFW3fg').set({
         'latitude': currentLocation.latitude,
         'longitude': currentLocation.longitude,
       }, SetOptions(merge: true));

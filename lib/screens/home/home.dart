@@ -1,20 +1,22 @@
 import 'package:agora_rtm/agora_rtm.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_arc_speed_dial/flutter_speed_dial_menu_button.dart';
-import 'package:flutter_arc_speed_dial/main_menu_floating_action_button.dart';
+import 'package:provider/provider.dart';
 import 'package:schoolcrm/constans/app_bar_style.dart';
 import 'package:schoolcrm/constans/colors.dart';
+import 'package:schoolcrm/constans/fonts.dart';
 import 'package:schoolcrm/constans/time.dart';
 import 'package:schoolcrm/models/logs.dart';
 import 'package:schoolcrm/screens/home/componants/absences.dart';
+import 'package:schoolcrm/screens/home/componants/exit_app_dialog.dart';
 import 'package:schoolcrm/screens/home/componants/financial_fees.dart';
 import 'package:schoolcrm/screens/home/componants/my_floating_action_button.dart';
+import 'package:schoolcrm/screens/home/componants/open_gmail.dart';
 import 'package:schoolcrm/screens/home/drawer/drawer.dart';
 import 'package:schoolcrm/screens/chat_group/message.dart';
 import 'package:flutter/material.dart';
 import 'package:schoolcrm/models/message_model.dart';
-import 'package:speed_dial_fab/speed_dial_fab.dart';
-import 'package:decorative_app_bar/decorative_app_bar.dart';
+import 'package:schoolcrm/screens/login/auth.dart';
+import 'package:schoolcrm/screens/programs/students_program.dart';
+
 
 class Home extends StatefulWidget {
   String userid;
@@ -38,10 +40,6 @@ class _HomeState extends State<Home> {
     createClient();
   }
 
-  final Shader linearGradient = LinearGradient(
-    colors: <Color>[Colors.white, Color(0xffffccbc)],
-  ).createShader(Rect.fromLTWH(0.0, 0.0, 200.0, 70.0));
-  bool _isShowDial = false;
 
   @override
   Widget build(BuildContext context) {
@@ -51,21 +49,50 @@ class _HomeState extends State<Home> {
         child: ManagerDrawer(),
       ),
       appBar: AppBar(
+
         systemOverlayStyle: systemOverlayStyle,
         shape: shape,
         backgroundColor: primaryColor,
         shadowColor:primaryColor,
-      ),
+        title:Row(
+          children: [
+            Icon(Icons.account_circle),
+            SizedBox(width: MediaQuery.of(context).size.width * 0.34,),
+            Text(Provider.of<Auth>(context,listen: false).getName(),style: TextStyle(
+              fontFamily: readexFont,
+              fontWeight: FontWeight.w600,
+            ),),
+      ],
+
+      ),),
+
 
 
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            AbsencesContainer(),
-          ],
+          child: Container(
+            padding: EdgeInsets.all(20),
+            height: MediaQuery.of(context).size.height,
+            color: secondaryColorLight,
+            child: Column(
+              children: [
+                AbsencesContainer(),
+                SizedBox(height: 30,),
+                FinancialFees(paidAmount:50000000 ,unpaidAmount:50000 ,),
+                SizedBox(height: 30,),
+                ElevatedButton(
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(primaryColor)),
+                    onPressed:() => openGmail(context),
+                    child: Text("صندوق البريد",style: TextStyle(fontFamily: readexFont),)
 
+                )
+
+              ],
+
+            ),
+          ),
         ),
-      ),
+
       floatingActionButton: MyFloatingActionButton(login: login,context: context,),
 
     );
