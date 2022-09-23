@@ -33,21 +33,17 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
-  agora_rtm: ^1.1.0
   emoji_picker_flutter: ^1.1.2
   shared_preferences: ^2.0.13
   intl: ^0.17.0
-  firebase_core: ^1.13.1
-  cloud_firestore: ^3.1.10
   google_maps_flutter: ^2.1.2
   http: ^0.13.4
-  permission_handler: ^8.0.0
-  location: ^4.3.0
+  permission_handler: ^9.2.0
+  location: ^4.4.0
   geolocator: ^8.2.0
   get: ^4.6.1
   pie_chart: ^5.3.0
   speed_dial_fab: ^2.2.1
-  agora_uikit: ^0.0.4
   decorative_app_bar: ^0.0.2
   flutter_arc_speed_dial: ^2.0.0
   sliding_up_panel: ^2.0.0+1
@@ -57,8 +53,15 @@ dependencies:
   image_picker: ^0.8.5+3
   file_picker: ^4.6.0
   provider: ^6.0.3
+  agora_rtm: ^1.1.1
+  agora_uikit: ^1.0.2
+  firebase_core: ^1.13.1
+  cloud_firestore: ^3.1.10
+  #firebase_auth: ^3.4.2
 
-
+  #firebase_core: ^1.13.1
+  #location: ^4.3.0
+  #cloud_firestore: ^3.1.10
 
 dev_dependencies:
   flutter_test:
