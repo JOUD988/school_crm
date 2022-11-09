@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:schoolcrm/api_host.dart';
+import 'package:schoolcrm/model/api_host.dart';
 import 'package:schoolcrm/model/marks.dart';
 
 class MarksController {

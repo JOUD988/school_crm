@@ -41,40 +41,45 @@ class _CustomTableState extends State<CustomTable> {
         children: [
           TableRow(
               children: [
+                Column(children:[Text("Course", style: programTextStyle)]),
                 Column(children:[Text(widget.day, style: programTextStyle)]),
-                Column(children:[Text("المادة", style: programTextStyle)]),
 
               ]),
           TableRow( children: [
-            Column(children:[Text('8:00-8:45',style: programTextStyle,),]),
             Column(children:[Text(widget.firstCourse,style: programTextStyle)]),
+            Column(children:[Text('8:00-8:45',style: programTextStyle,),]),
 
           ]),
           TableRow(
               children: [
-                Column(children:[Text('8:45-9:30', style: programTextStyle)]),
                 Column(children:[Text(widget.secondCourse, style: programTextStyle)]),
+                Column(children:[Text('8:45-9:30', style: programTextStyle)]),
+
 
               ]),
           TableRow( children: [
-            Column(children:[Text('9:45-10:30',style: programTextStyle,),]),
             Column(children:[Text(widget.thirdCourse,style: programTextStyle)]),
+            Column(children:[Text('9:45-10:30',style: programTextStyle,),]),
+
 
           ]),
           TableRow(
               children: [
-                Column(children:[Text('10:30-11:15', style: programTextStyle)]),
                 Column(children:[Text(widget.fourthCourse, style: programTextStyle)]),
+                Column(children:[Text('10:30-11:15', style: programTextStyle)]),
+
 
               ]),
           TableRow( children: [
-            Column(children:[Text('11:30-12:15',style: programTextStyle,),]),
             Column(children:[Text(widget.fifthCourse,style: programTextStyle)]),
+            Column(children:[Text('11:30-12:15',style: programTextStyle,),]),
+
 
           ]),
           TableRow( children: [
-            Column(children:[Text('12:15-1:00',style: programTextStyle,),]),
             Column(children:[Text(widget.sixthCourse,style: programTextStyle)]),
+            Column(children:[Text('12:15-1:00',style: programTextStyle,),]),
+
 
           ]),
 

@@ -6,7 +6,7 @@ import 'package:schoolcrm/model/program_model.dart';
 
 class ProgramController {
   String baseUrl =
-      "https://api.json-generator.com/templates/5LmczRB_HPvS/data?access_token=5to13khbnyhhldip0loy8xy2vm2aoq5ezl6pfv8o";
+      "https://api.json-generator.com/templates/VgqYD7kqOkGG/data?access_token=5to13khbnyhhldip0loy8xy2vm2aoq5ezl6pfv8o";
 
   Future<List<ProgramModel>> getProgram() async {
     try {

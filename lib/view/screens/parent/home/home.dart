@@ -46,7 +46,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      endDrawer: Drawer(
+      drawer: Drawer(
         backgroundColor: Colors.transparent,
         child: ManagerDrawer(),
       ),
@@ -56,22 +56,8 @@ class _HomeState extends State<Home> {
         shape: shape,
         backgroundColor: primaryColor,
         shadowColor:primaryColor,
-        title:Row(
-          children: [
-            RaisedButton(
-                color: Colors.green,
-                child: Icon(Icons.account_circle,color: Colors.white,),
-                onPressed: (){},
 
-            ),
-
-            /*Text(Provider.of<Auth>(context,listen: false).getName(),style: TextStyle(
-              fontFamily: readexFont,
-              fontWeight: FontWeight.w600,
-            ),),*/
-      ],
-
-      ),),
+      ),
 
 
 

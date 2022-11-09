@@ -12,21 +12,19 @@ import 'package:schoolcrm/view/screens/parent/programs/students_program.dart';
 class ManagerDrawer extends StatelessWidget {
 
   Auth auth  = Auth();
-
   @override
   Widget build(BuildContext context) {
 
     return  Drawer(
       backgroundColor:secondaryColorLight ,
         shape:RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(bottomLeft: Radius.circular(50),topLeft:Radius.circular(50) )
+          borderRadius: BorderRadius.only(bottomRight: Radius.circular(50),topRight:Radius.circular(50) )
           ),
 
         child: ListView(
 
           children: <Widget>[
             SafeArea(
-
               child: Container(
                 child: DrawerHeader(
                   decoration: BoxDecoration(
@@ -42,7 +40,7 @@ class ManagerDrawer extends StatelessWidget {
               
               trailing: Icon(Icons.airport_shuttle, color: primaryColor),
 
-              title: Text('تتبع الباص' , style: TextStyle(
+              title: Text('Bus tracking' , style: TextStyle(
                 color: Colors.blueGrey.shade800,
                 fontSize: 15,
                 fontFamily: "Readex_Pro",
@@ -56,7 +54,7 @@ class ManagerDrawer extends StatelessWidget {
 
               trailing: Icon(Icons.add_road,color: primaryColor),
 
-              title: Text('العلامات' , style: TextStyle(
+              title: Text('Marks' , style: TextStyle(
                 color: Colors.blueGrey.shade800,
                 fontSize: 15,
                 fontFamily: "Readex_Pro",
@@ -70,7 +68,7 @@ class ManagerDrawer extends StatelessWidget {
 
               trailing: Icon(Icons.alarm_off,color: primaryColor),
 
-              title: Text('تبرير غياب' , style: TextStyle(
+              title: Text('Justify absence' , style: TextStyle(
                 color: Colors.blueGrey.shade800,
                 fontSize: 15,
                 fontFamily: "Readex_Pro",
@@ -84,7 +82,7 @@ class ManagerDrawer extends StatelessWidget {
 
               trailing: Icon(Icons.warning_amber_outlined,color: primaryColor),
 
-              title: Text('برنامج الدوام' , style: TextStyle(
+              title: Text('The program' , style: TextStyle(
                 color: Colors.blueGrey.shade800,
                 fontSize: 15,
                 fontFamily: "Readex_Pro",
@@ -99,7 +97,7 @@ class ManagerDrawer extends StatelessWidget {
 
               trailing: Icon(Icons.logout, color: Colors.red),
 
-              title: Text('تسجيل الخروج' , style: TextStyle(
+              title: Text('Sign out' , style: TextStyle(
                 color: Colors.blueGrey.shade800,
                 fontSize: 15,
                 fontFamily: "Readex_Pro",

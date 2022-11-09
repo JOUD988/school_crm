@@ -62,7 +62,7 @@ class _JustifyAbsenceState extends State<JustifyAbsence> {
         shape: shape,
         systemOverlayStyle: systemOverlayStyle,
         centerTitle: true,
-        title: Text("تبرير غياب",
+        title: Text("Justify student absence",
         style: TextStyle(
           fontFamily: readexFont,
           fontWeight: FontWeight.bold
@@ -103,7 +103,7 @@ class _JustifyAbsenceState extends State<JustifyAbsence> {
                           hintText: Time().getCurrentDate(),
                           icon: Icon(
                             Icons.calendar_today, color: primaryColor,),
-                          labelText: "التاريخ",
+                          labelText: "Date",
 
                           labelStyle: TextStyle(
                             color: primaryColor,
@@ -141,12 +141,12 @@ class _JustifyAbsenceState extends State<JustifyAbsence> {
                           Radius.circular(20.0)),
                       // set rounded corner radius
                     ),
-                  child:isLoadedImage? Text("التقرير الطبي جاهز للارسال"): Text("التقرير الطبي غير مرفوع"),
+                  child:isLoadedImage? Text("The medical report is ready to be sent"): Text("The medical report is not loaded"),
                 ),
                 SizedBox(height: 20,),
-                ElevatedButton(onPressed: (){_openFileExplorer();}, child: Text('ارفع التقرير'),style:ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(primaryColor)) ,),
+                ElevatedButton(onPressed: (){_openFileExplorer();}, child: Text('Upload report'),style:ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(primaryColor)) ,),
                 SizedBox(height: 60,),
-                ElevatedButton(onPressed: (){_uploadFile();}, child: Text('ارسال التقرير'),style:ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(primaryColor))),
+                ElevatedButton(onPressed: (){_uploadFile();}, child: Text('Send report'),style:ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(primaryColor))),
 
               ],
             )
@@ -191,20 +191,6 @@ class _JustifyAbsenceState extends State<JustifyAbsence> {
 
   }
 
-
-/*
-  List<DropdownMenuItem<String>> get dropdownItems{
-    [
-      DropdownMenuItem(child: Text("USA"),value: "USA"),
-      DropdownMenuItem(child: Text("Canada"),value: "Canada"),
-      DropdownMenuItem(child: Text("Brazil"),value: "Brazil"),
-      DropdownMenuItem(child: Text("England"),value: "England"),
-    ]
-
-    return menuItems;
-  }
-
-*/
 
 
 }

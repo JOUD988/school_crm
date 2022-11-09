@@ -6,7 +6,6 @@ import 'package:schoolcrm/view/screens/common/login/auth.dart';
 import 'package:schoolcrm/view/screens/common/login/componants/call_school_botton.dart';
 import 'package:schoolcrm/view/screens/driver/driver_map.dart';
 import 'package:schoolcrm/view/screens/parent/home/home.dart';
-import 'package:schoolcrm/view/screens/psychological_counselor/home.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -41,7 +40,7 @@ class _LoginState extends State<Login> {
               padding: const EdgeInsets.all(20),
               child: Center(
                   child: Text(
-                "تسجيل الدخول",
+                "Sign in",
                 style: TextStyle(
                     color: Colors.white,
                     fontSize: 40,
@@ -154,14 +153,7 @@ class _LoginState extends State<Login> {
                                                 DriverMap()
                                           ,),);
                                   }
-                                  else if (Provider.of<Auth>(context,listen: false).getRole(emailController.text) == "counselor") {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            CounselorHome(),
-                                        ),);
-                                  }
+
                                   else{
                                     Navigator.push(
                                         context,
